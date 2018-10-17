@@ -57,9 +57,15 @@ describe('/todos', () => {
   });
 
   describe('DELETE /', () => {
-    //...?
-    /*it('should delete one todo item', () => {
-
-    });*/
+    // another new section, successful delete test
+    it('should delete one todo item', () => {
+      return ToDo.create({
+        subject: 'test',
+      }).then((item) => {
+        return request(app)
+          .delete(rootPath + '/' + item.id)
+          .expect(200);
+      });
+    });
   });
 });
