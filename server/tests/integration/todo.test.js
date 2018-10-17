@@ -33,6 +33,13 @@ describe('/todos', () => {
         });
       });
     });
+
+    // newly added - expects a 404 for a nonexistant id
+    it('should return a 404', () => {
+      return request(app)
+        .get(rootPath + ":DNE")
+        .expect(404);
+    });
   });
 
   describe('POST /', () => {
@@ -47,5 +54,12 @@ describe('/todos', () => {
           return expect(response.body.subject).toEqual('test');
         });
     });
+  });
+
+  describe('DELETE /', () => {
+    //...?
+    /*it('should delete one todo item', () => {
+
+    });*/
   });
 });
