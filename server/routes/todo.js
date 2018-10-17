@@ -35,7 +35,11 @@ router.route('/:id')
   // get a specific todo
   .get((req, res) => {
     ToDo.findById(req.params.id).then((todo) => {
-      res.json(todo);
+      if (todo) {
+        res.json(todo);
+      } else {
+        res.send(404);
+      }
     });
   })
 
